@@ -60,7 +60,7 @@ Hence, we can now compute the error terms $u_i$. We can also now calculate the c
 
 We express this in the Vector Moving Average (VMA) form. The generalized version of VMA is:
 
-$$y_t = c + \sum_{i=0}^\infin \Psi_i u_{t-i}$$
+$$y_t = c + \sum_{i=0}^\infty \Psi_i u_{t-i}$$
 
 where
 * $c$ is the same constant vector.
@@ -91,7 +91,7 @@ $$\tilde{\gamma_{ij}} = \frac{\gamma_{ij}}{\sum_j \gamma_{ij}}$$
 
 Finally, the net spillover from the $i$-th stock to the $j$-th stock, we compute:
 
-$$Net_{ij} = \gamma_{ji} - \gamma_{ij}$$
+$$Net_{ij} = \tilde{\gamma_{ji}} - \tilde{\gamma_{ij}}$$
 
 
 
