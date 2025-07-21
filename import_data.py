@@ -23,6 +23,10 @@ class ImportData:
         
         df = pd.DataFrame(stock_history)
 
+        if len(self.df_main) == 0:
+            df_timestamp = df[["timestamp"]]
+            self.df_main = pd.concat([self.df_main, df_timestamp], axis=1)
+
         df = df[["high", "low", "close"]]
         df.columns = [f"{stock}_" + col for col in df.columns]
 
@@ -33,6 +37,9 @@ class ImportData:
         for stock in stock_list:
             self.get_one_stock_history(stock)
 
+        self.df_main["timestamp"] = pd.to_datetime(self.df_main["timestamp"], unit="ms")
+
+        print(self.df_main.head(5))
         self.df_main.to_csv(os.path.join("data", "stock_data.csv"), index=False)
 
 
