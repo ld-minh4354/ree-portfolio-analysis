@@ -1,10 +1,10 @@
 # Portfolio Hedging Effectiveness of Rare Earth Elements
 
-## Abstract
+### Abstract
 
 Portfolio hedging instruments refer to financial tools that are used to protect against risk, particularly the risk of price fluctiations in e.g. stocks, assets and currencies. Tedeschi (2025) shows that rare earth elements (REEs) used to be effective hedges; however, their effectiveness has been diminished due to market volatility and geopolitical instability. Tedeschi used financial data until early October 2024.
 
-We investigate whether this finding continues to hold using newly available data until the end of June 2025. We find this time period especially relevant due to the announcement of new US tariffs, which has increased market volatility and geopolitical instability. We are particularly interested in REE's hedging effecitveness before and after the first tariff announcement on April 2, 2025.
+We investigate whether this finding continues to hold using newly available data until the end of June 2025. We find this time period especially relevant due to China's tightening of export controls on REEs between August and October 2024, as well as the announcement of wide-ranging U.S. tariffs on April 2, 2025. These developments have significantly increased market volatility and geopolitical instability. We are particularly interested in REE's hedging effecitveness before and after each of these development.
 
 
 ## Data and Preprocessing
@@ -37,7 +37,7 @@ $$HL_t = \sqrt{\frac{1}{t} \sum_{i=1}^t \frac{1}{4\ln 2} \ln \frac{h_i}{l_i}}$$
 
 Our goal is to calculate the net spillover of from REMX to each other stock. We also want to calculate this net spillover over a time period; meaning, we will have a net spillover value on each day.
 
-To do this, for each day starting from [TO BE DETERMINED], we take the stock values in the previous 200 days (including the considered day) and feed it into the price movement model as detailed below.
+To do this, for each day starting from May 16, 2024, we take the stock values in the previous 200 days (including the considered day) and feed it into the price movement model as detailed below.
 
 ### Modeling Price Movement
 
@@ -93,6 +93,16 @@ Finally, the net spillover from the $i$-th stock to the $j$-th stock, we compute
 
 $$Net_{ij} = \tilde{\gamma_{ji}} - \tilde{\gamma_{ij}}$$
 
+## Results
+
+We present the plots of our simulation results.
+
+
+
+![Spillover from REMX to FAN (return)](plots/FAN_return.png)
+![Spillover from REMX to ICLN (return)](plots/ICLN_return.png)
+![Spillover from REMX to TAN (return)](plots/TAN_return.png)
+![Spillover from REMX to XLE (return)](plots/XLE_return.png)
 
 
 ## References
@@ -100,4 +110,3 @@ $$Net_{ij} = \tilde{\gamma_{ji}} - \tilde{\gamma_{ij}}$$
 Diebold, Francis X., and Kamil Yilmaz. "Better to give than to receive: Predictive directional measurement of volatility spillovers." International Journal of forecasting 28.1 (2012): 57-66.
 
 Tedeschi, Marco. "Do Rare Earth Elements (REEs) hedge financial risk? A spillover and portfolio analysis in the context of the energy market." Resources Policy (2025): 105612.
-
