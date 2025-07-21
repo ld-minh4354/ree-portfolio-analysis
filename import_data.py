@@ -18,7 +18,7 @@ class ImportData:
         stock_history = self.client.get_aggs(ticker = stock,
                                              multiplier = 1,
                                              timespan = "day",
-                                             from_ = "2024-01-01",
+                                             from_ = "2023-08-01",
                                              to = "2025-06-30")
         
         df = pd.DataFrame(stock_history)
