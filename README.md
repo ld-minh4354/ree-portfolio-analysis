@@ -4,7 +4,11 @@
 
 Portfolio hedging instruments refer to financial tools that are used to protect against risk, particularly the risk of price fluctiations in e.g. stocks, assets and currencies. Tedeschi (2025) shows that rare earth elements (REEs) used to be effective hedges; however, their effectiveness has been diminished due to market volatility and geopolitical instability. Tedeschi used financial data until early October 2024.
 
-We investigate whether this finding continues to hold using newly available data until the end of June 2025. We find this time period especially relevant due to China's tightening of export controls on REEs between August and October 2024, as well as the announcement of wide-ranging U.S. tariffs on April 2, 2025. These developments have significantly increased market volatility and geopolitical instability. We are particularly interested in REE's hedging effecitveness before and after each of these development.
+We investigate whether this finding continues to hold using newly available data until the end of June 2025. We find this time period especially relevant due to China's tightening of export controls on REEs between August and October 2024, as well as the announcement of wide-ranging U.S. tariffs on April 2, 2025. These developments have significantly increased market volatility and geopolitical instability. We are particularly interested in REE's hedging effecitveness as a result of these development.
+
+We find that these events cause increasing spillover from the REE market to the wind, solar, and clean energy market, while the spillover to the entire energy sector seems negligible. Crucially, in all but the solar energy market, REE emits positive spillovers to other market.
+
+We thus conclude that recent geopolitical developments have rendered REE as either an ineffective or a significantly less effective portfolio hedging instrument.
 
 
 ## Data and Preprocessing
@@ -21,15 +25,9 @@ We extract the highest, lowest, and closing prices of various stocks from August
 
 ### Preprocessing
 
-For each stock, let $p_t$, $h_t$, and $l_t$ be the closing, highest, and lowest prices in day $t$, respectively. Throughout this document, $t$ is 1-indexed, meaning the index of $t$ starts from 1. 
-
-We calculate the daily returns:
+For each stock, let $p_t$ be the closing price in day $t$. Throughout this document, $t$ is 1-indexed, meaning the index of $t$ starts from 1. We calculate the daily returns as follows:
 
 $$r_t = \log \frac{p_t}{p_{t-1}}$$
-
-and the HL volatility:
-
-$$HL_t = \sqrt{\frac{1}{t} \sum_{i=1}^t \frac{1}{4\ln 2} \ln \frac{h_i}{l_i}}$$
 
 ## Dynamic Spillover Analysis
 
@@ -41,7 +39,7 @@ To do this, for each day starting from May 16, 2024, we take the stock values in
 
 ### Modeling Price Movement
 
-Let $y_t$ be the vector of either the returns and votatilities of all 5 stocks in day $t$. Essentially, $y_t$ contains 5 values with are either $r_t$ or $HL_t$ for all 5 stocks.
+Let $y_t$ be the vector of the returns of all 5 stocks in day $t$.
 
 We use a Vector AutoRegressive (VAR) model, whose generalized form is:
 
@@ -95,15 +93,21 @@ $$Net_{ij} = \tilde{\gamma_{ji}} - \tilde{\gamma_{ij}}$$
 
 ## Results
 
-We present the plots of our simulation results.
+We present the plots of our simulation results. Our main observations are as follows:
+* In all stocks but TAN, the spillover is positive throughout the considered time period.
+* China tightening export controls on REEs significantly increased the spillover to FAN, ICLN, and TAN. The spillover did increase for XLE during this time period, but it had been increasing since before this export tightening.
+* U.S. tariffs significantly increased the spillover to ICLN an TAN, while only slightly increases the spillover to FAN.
 
+From these observations, we find that:
+* REEs are ineffective hedges for FAN, ICLN and XLE, as the spillover is positive. For FAN and ICLN, this ineffectiveness is further worsened by geopolitical instability.
+* Even though REEs are marginally effective hedges for TAN, recent geopolitical developments significantly diminish REEs' effectiveness as hedges.
 
+We thus conclude that recent geopolitical developments have rendered REE as either an ineffective or a significantly less effective portfolio hedging instrument.
 
 ![Spillover from REMX to FAN (return)](plots/FAN_return.png)
 ![Spillover from REMX to ICLN (return)](plots/ICLN_return.png)
 ![Spillover from REMX to TAN (return)](plots/TAN_return.png)
 ![Spillover from REMX to XLE (return)](plots/XLE_return.png)
-
 
 ## References
 
